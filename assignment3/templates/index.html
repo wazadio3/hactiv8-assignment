@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="refresh" content="5">
+    <title>Water and Wind Status</title>
+</head>
+
+<body>
+    <center>
+        <h1>Water and Wind Status</h1>
+        <table style="border: 1px solid;">
+            <thead style="border: 1px solid;">
+                <th style="border: 1px solid;">
+                    <strong>Water</strong>
+                </th>
+                <th style="border: 1px solid;">
+                    <strong>Wind</strong>
+                </th>
+                <th style="border: 1px solid;">
+                    <strong>Status</strong>
+                </th>
+            </thead>
+            <tbody style="border: 1px solid;">
+                <td style="border: 1px solid;">
+                    {{ .water }}
+                </td>
+                <td style="border: 1px solid;">
+                    {{ .wind }}
+                </td>
+                <td style="border: 1px solid;">
+                    {{ .status }}
+                </td>
+            </tbody>
+        </table>
+    </center>
+</body>
+
+</html>
