@@ -1,0 +1,14 @@
+[
+    {
+        "email": "juni@mail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imp1bmlAbWFpbC5jb20iLCJpZCI6MX0.RMc2_n08GmqDNBMxsPofXnOXjf4smIpElub-9JTrcgw"
+    },
+    {
+        "email": "juni@mail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imp1bmlAbWFpbC5jb20iLCJpZCI6MX0.RMc2_n08GmqDNBMxsPofXnOXjf4smIpElub-9JTrcgw"
+    },
+    {
+        "email": "dio@mail.com",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRpb0BtYWlsLmNvbSIsImlkIjozfQ.j7z234sId9y69hzThPfgWthe4Di0DZD0WROytBAGqz4"
+    }
+]

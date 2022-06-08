@@ -1,0 +1,639 @@
+{
+	"info": {
+		"_postman_id": "486c12c8-8bb0-49ec-9fe3-16d5c059c515",
+		"name": "final assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21050468"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"age\": 20,\n    \"email\": \"admin@mail.com\",\n    \"password\": \"admin123\",\n    \"username\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resData = pm.response.json()",
+									"try {",
+									"    pm.environment.set('token', resData.token);",
+									"} catch {",
+									"    console.log(\"didn't get token from response body\")",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@mail.com\",\n    \"password\": \"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "photo",
+			"item": [
+				{
+					"name": "Create Photo",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"title\": \"first photo\",\n   \"caption\": \"tes\",\n   \"photo_url\": \"www\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/photo",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Photos",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/photo",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Photo By Id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"a\",\n    \"caption\": \"b\",\n    \"photo_url\": \"c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/photo/10",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"photo",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Photo",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/photo/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"photo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "Create Comment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"message\": \"first comment\",\n   \"photo_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/comment",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comments",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/comment",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment By Id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": \"a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/comment/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment By Id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/comment/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "social media",
+			"item": [
+				{
+					"name": "Create Social Media",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"name\": \"first\",\n   \"social_media_url\": \"tes\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/socialmedia",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"socialmedia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Social Medias",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/socialmedia",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"socialmedia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Social Media By Id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"name\": \"first\",\n   \"social_media_url\": \"tes2\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/socialmedia/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"socialmedia",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Social Media By Id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const token = pm.environment.get(\"token\")",
+									"",
+									"pm.request.headers.add({",
+									"    key: \"Authorization\",",
+									"    value: `Bearer ${token}`",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/socialmedia/4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"socialmedia",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
